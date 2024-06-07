@@ -57,14 +57,8 @@ exports.handler = async (event) => {
         // Sort the repositories by created_at date
         filteredRepoDetails.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(filteredRepoDetails),
-        };
+        return filteredRepoDetails;
     } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify(error.message),
-        };
+        return error.message;
     }
 };
